@@ -9,6 +9,7 @@ on:
       - 'scripts/**'
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   validate-and-convert:
