@@ -1,0 +1,1 @@
+source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17" NOT ServiceName="*$" | table TargetUserName,ServiceName,IpAddress

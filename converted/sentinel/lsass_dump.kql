@@ -1,0 +1,1 @@
+TargetImage endswith "\\lsass.exe" and (GrantedAccess in~ ("0x1010", "0x1410", "0x1438", "0x143a", "0x1fffff")) and (not((SourceImage endswith "\\MsMpEng.exe" or SourceImage endswith "\\dllhost.exe")))

@@ -1,0 +1,41 @@
+title: Suspicious Encoded PowerShell Execution
+id: 8a1f3e2c-4b9d-4e7a-9c1f-2d8b6a4e3f1c
+status: experimental
+description: |
+    Detects PowerShell execution with base64-encoded command parameters,
+    a common technique used to obfuscate malicious scripts and evade
+    signature-based detection.
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+    - https://attack.mitre.org/techniques/T1027/
+author: Sathwik Narendrula
+date: 2026-06-18
+tags:
+    - attack.execution
+    - attack.defense-evasion
+    - attack.t1059.001
+    - attack.t1027
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    selection_encoded:
+        CommandLine|contains:
+            - '-enc '
+            - '-EncodedCommand'
+            - '-e '
+    selection_suspicious_flags:
+        CommandLine|contains:
+            - '-w hidden'
+            - '-windowstyle hidden'
+            - '-nop'
+            - '-noprofile'
+    condition: selection_img and selection_encoded and selection_suspicious_flags
+falsepositives:
+    - Legitimate administrative scripts that use encoding for parameter passing
+    - Software deployment tools that wrap PowerShell commands
+level: high

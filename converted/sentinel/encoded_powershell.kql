@@ -1,0 +1,1 @@
+(Image endswith "\\powershell.exe" or Image endswith "\\pwsh.exe") and (CommandLine contains "-enc " or CommandLine contains "-EncodedCommand" or CommandLine contains "-e ") and (CommandLine contains "-w hidden" or CommandLine contains "-windowstyle hidden" or CommandLine contains "-nop" or CommandLine contains "-noprofile")

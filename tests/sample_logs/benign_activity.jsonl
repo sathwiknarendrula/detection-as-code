@@ -1,0 +1,5 @@
+{"timestamp": "2026-06-18T09:14:22Z", "EventID": 1, "Image": "C:\\Windows\\System32\\powershell.exe", "CommandLine": "powershell.exe -File C:\\Scripts\\backup.ps1", "User": "CORP\\svc_backup", "Hostname": "WKS-0451"}
+{"timestamp": "2026-06-18T09:15:01Z", "EventID": 1, "Image": "C:\\Windows\\System32\\powershell.exe", "CommandLine": "powershell.exe Get-Process | Where-Object {$_.CPU -gt 50}", "User": "CORP\\jsmith", "Hostname": "WKS-0892"}
+{"timestamp": "2026-06-18T09:16:45Z", "EventID": 10, "TargetImage": "C:\\Windows\\System32\\lsass.exe", "SourceImage": "C:\\Program Files\\Windows Defender\\MsMpEng.exe", "GrantedAccess": "0x1fffff", "User": "NT AUTHORITY\\SYSTEM", "Hostname": "WKS-0451"}
+{"timestamp": "2026-06-18T09:17:30Z", "EventID": 4769, "TargetUserName": "WKS-0892$", "ServiceName": "WKS-0892$", "TicketEncryptionType": "0x17", "IpAddress": "10.0.4.22", "Hostname": "DC-01"}
+{"timestamp": "2026-06-18T09:18:10Z", "EventID": 1, "Image": "C:\\Windows\\System32\\pwsh.exe", "CommandLine": "pwsh.exe -Command Get-ChildItem C:\\Logs", "User": "CORP\\admin_team", "Hostname": "WKS-1102"}

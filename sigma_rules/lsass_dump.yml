@@ -1,0 +1,36 @@
+title: LSASS Memory Dump via Process Access
+id: 3f7c9e1a-6d2b-4a8e-b5f3-1c9d7a2e4b6f
+status: experimental
+description: |
+    Detects processes accessing LSASS.exe memory with access rights
+    commonly associated with credential dumping tools such as
+    Mimikatz, ProcDump, and Task Manager memory dump.
+references:
+    - https://attack.mitre.org/techniques/T1003/001/
+author: Sathwik Narendrula
+date: 2026-06-18
+tags:
+    - attack.credential-access
+    - attack.t1003.001
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection_target:
+        TargetImage|endswith: '\lsass.exe'
+    selection_access:
+        GrantedAccess:
+            - '0x1010'
+            - '0x1410'
+            - '0x1438'
+            - '0x143a'
+            - '0x1fffff'
+    filter_known_tools:
+        SourceImage|endswith:
+            - '\MsMpEng.exe'
+            - '\dllhost.exe'
+    condition: selection_target and selection_access and not filter_known_tools
+falsepositives:
+    - Endpoint protection software performing legitimate memory inspection
+    - System diagnostic tools used by administrators
+level: critical

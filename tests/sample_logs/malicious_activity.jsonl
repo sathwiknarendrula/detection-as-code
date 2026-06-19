@@ -1,0 +1,5 @@
+{"timestamp": "2026-06-18T14:02:11Z", "EventID": 1, "Image": "C:\\Windows\\System32\\powershell.exe", "CommandLine": "powershell.exe -enc JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQA -w hidden -nop", "User": "CORP\\jsmith", "Hostname": "WKS-0892"}
+{"timestamp": "2026-06-18T14:03:45Z", "EventID": 10, "TargetImage": "C:\\Windows\\System32\\lsass.exe", "SourceImage": "C:\\Users\\Public\\procdump64.exe", "GrantedAccess": "0x1410", "User": "CORP\\jsmith", "Hostname": "WKS-0892"}
+{"timestamp": "2026-06-18T14:05:02Z", "EventID": 4769, "TargetUserName": "jsmith", "ServiceName": "MSSQLSvc/db01.corp.local:1433", "TicketEncryptionType": "0x17", "IpAddress": "10.0.4.55", "Hostname": "DC-01"}
+{"timestamp": "2026-06-18T14:05:09Z", "EventID": 4769, "TargetUserName": "jsmith", "ServiceName": "HTTP/web02.corp.local", "TicketEncryptionType": "0x17", "IpAddress": "10.0.4.55", "Hostname": "DC-01"}
+{"timestamp": "2026-06-18T14:05:18Z", "EventID": 4769, "TargetUserName": "jsmith", "ServiceName": "CIFS/fileserver.corp.local", "TicketEncryptionType": "0x17", "IpAddress": "10.0.4.55", "Hostname": "DC-01"}

@@ -1,0 +1,34 @@
+title: Potential Kerberoasting Activity via Kerberos Service Ticket Request
+id: 5b8d2f4e-9a1c-4e6b-8d3f-7c2a9e5b1d4f
+status: experimental
+description: |
+    Detects multiple Kerberos service ticket (TGS) requests using RC4
+    encryption from a single source in a short time window, indicative
+    of Kerberoasting attempts to harvest service account credentials
+    for offline cracking.
+references:
+    - https://attack.mitre.org/techniques/T1558/003/
+author: Sathwik Narendrula
+date: 2026-06-18
+tags:
+    - attack.credential-access
+    - attack.t1558.003
+logsource:
+    product: windows
+    service: security
+    definition: 'Requires Windows Security auditing for Kerberos Service Ticket Operations (Event ID 4769) to be enabled'
+detection:
+    selection:
+        EventID: 4769
+        TicketEncryptionType: '0x17'
+    filter_machine_accounts:
+        ServiceName|endswith: '$'
+    condition: selection and not filter_machine_accounts
+fields:
+    - TargetUserName
+    - ServiceName
+    - IpAddress
+falsepositives:
+    - Legacy applications that only support RC4 encryption
+    - Service accounts with misconfigured Kerberos encryption settings
+level: medium
